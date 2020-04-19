@@ -137,6 +137,7 @@ def learn_from_memory():
 
         q = get_q_values(s2).data.numpy()
         q2 = np.max(q, axis=1)
+        import pdb; pdb.set_trace()
         target_q = get_q_values(s1).data.numpy()
         # target differs from q only for the selected action. The following means:
         # target_Q(s,a) = r + gamma * max Q(s2,_) if isterminal else r
@@ -215,7 +216,7 @@ if __name__ == '__main__':
         model = torch.load(model_savefile)
     else:
         model = Net(len(actions))
-    
+
     optimizer = torch.optim.SGD(model.parameters(), learning_rate)
 
     print("Starting the training!")
